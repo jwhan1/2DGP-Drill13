@@ -1,6 +1,5 @@
 from pico2d import *
 import game_world
-import game_framework
 import random
 import server
 
@@ -17,7 +16,7 @@ class Ball:
         self.sy = self.y
     def draw(self):
         self.image.draw(self.sx, self.sy)
-        draw_rectangle(*self.get_bb())
+        draw_rectangle(self.sx - 10, self.sy - 10, self.sx + 10, self.sy + 10)
 
     def update(self):
         self.sx = self.x - server.background.window_left
@@ -25,9 +24,8 @@ class Ball:
 
 
     def get_bb(self):
-        return self.sx - 10, self.sy - 10, self.sx + 10, self.sy + 10
+        return self.x - 10, self.y - 10, self.x + 10, self.y + 10
 
     def handle_collision(self, group, other):
-
         if 'boy:ball':
             game_world.remove_object(self)
