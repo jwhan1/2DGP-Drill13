@@ -203,7 +203,7 @@ class Boy:
             }
         )
 
-        self.ballcount=0
+        self.ball_count = 0
         # modify here
         self.x, self.y = get_canvas_width() / 2, get_canvas_height() / 2# 0 ~ background.w, 0 ~ background.h
 
@@ -226,7 +226,7 @@ class Boy:
         sy = self.y - server.background.window_bottom 
         
         self.image.clip_draw(int(self.frame) * 100, self.action * 100, 100, 100, sx, sy)
-        self.font.draw(int(sx - 100), int(sy + 60), f'({self.x:5.5}, {self.y:5.5})', (255, 255, 0))
+        self.font.draw(int(sx - 100), int(sy + 60), f'ball: {self.ball_count},({self.x:5.5}, {self.y:5.5})', (255, 255, 0))
 
 
     def get_bb(self):

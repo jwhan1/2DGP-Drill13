@@ -30,13 +30,14 @@ def handle_events():
 def init():
     server.background = Background()
     game_world.add_object(server.background, 0)
+
     server.boy = Boy()
     game_world.add_object(server.boy, 1)
-
+    game_world.add_collision_pair('boy:ball', server.boy, None)
     
     balls = [Ball() for _ in range(100)]
+    game_world.add_objects(balls , 1)
     for ball in balls:
-        game_world.add_object(ball, 1)
         game_world.add_collision_pair('boy:ball', None, ball)
 
 def finish():
